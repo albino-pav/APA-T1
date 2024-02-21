@@ -1,6 +1,6 @@
 # Primera tasca APA 2023: Anàlisi fitxer de so
 
-## Nom i cognoms:
+## Nom i cognoms: Yago Carballo Barroso
 
 ## Representació temporal i freqüencial de senyals d'àudio
 
@@ -148,5 +148,5 @@ plt.show()                            # Per mostrar els grafics
   - Disposa d'una petita introducció a llenguatge de Markdown al fitxer `MARKDOWN.md`.
 - El repositori GitHub ha d'incloure un fitxer amb tot el codi necesari per respondre les qüestions i dibuixar les gràfiques.
 - El nom del fitxer o fitxers amb el codi ha de començar amb les inicials de l'alumne (per exemple, `fvp_codi.py`).
-- Recordéu ficar el el vostre nom complet a l'inici del fitxer o fitxers amb el codi i d'emplar el camp `Nom i cognoms` a dalt de tot
+- Recordeu ficar el vostre nom complet a l'inici del fitxer o fitxers amb el codi i d'emplar el camp `Nom i cognoms` a dalt de tot
   d'aquest fitxer, README.md.
