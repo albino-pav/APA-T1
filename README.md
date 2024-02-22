@@ -1,6 +1,6 @@
 # Primera tasca APA 2023: Anàlisi fitxer de so
 
-## Nom i cognoms:
+## Nom i cognoms: Andreu Snijders i Adrián Fernández
 
 ## Representació temporal i freqüencial de senyals d'àudio
 
