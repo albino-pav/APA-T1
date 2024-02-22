@@ -109,7 +109,6 @@ plt.show()                            # Per mostrar els grafics
 ![5 periodes de la sinusoide (1KHz)](img/1KHz.png)
 
 comentar que la sinus no es veu be perque el sample rate es massa baix, pitjor resolucio de la forma d'ona...
-<br><br>
 
 ![5 periodes de la sinusoide (2KHz)](img/2KHz.png)
 
