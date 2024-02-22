@@ -106,8 +106,10 @@ plt.show()                            # Per mostrar els grafics
 
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una freqüència pròpia en el marge audible. Comenta els resultats.<br>
 ![5 periodes de la sinusoide (1KHz)](img/1KHz.png)
+
 comentar que la sinus no es veu be perque el sample rate es massa baix, pitjor resolucio de la forma d'ona...<br>
 ![5 periodes de la sinusoide (2KHz)](img/2KHz.png)
+
 comentar que es veu encara pitjor...
 <br><br>
 
