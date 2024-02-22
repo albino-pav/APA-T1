@@ -110,7 +110,7 @@ plt.show()                            # Per mostrar els grafics
 
 comentar que la sinus no es veu be perque el sample rate es massa baix, pitjor resolucio de la forma d'ona...
 
-![5 periodes de la sinusoide (2KHz)](img/2KHz.png)
+![5 periodes de la sinusoide (4KHz)](img/4KHz.png)
 
 comentar que es veu encara pitjor...
 <br><hr>
