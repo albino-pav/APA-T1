@@ -109,6 +109,7 @@ plt.show()                            # Per mostrar els grafics
 ![5 periodes de la sinusoide (1KHz)](img/1KHz.png)
 
 comentar que la sinus no es veu be perque el sample rate es massa baix, pitjor resolucio de la forma d'ona...
+<br><br>
 
 ![5 periodes de la sinusoide (2KHz)](img/2KHz.png)
 
@@ -120,6 +121,7 @@ comentar que es veu encara pitjor...
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
 
     - Explica el resultat del apartat anterior.
+<hr>
 
 3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de
     $0$ a $f_m/2$ en Hz.
@@ -138,6 +140,7 @@ comentar que es veu encara pitjor...
     > - La relació entre els valors de l'índex k i la freqüència en Hz és:
     >
     > $f_k = \frac{k}{N} f_m$
+<hr>
 
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
     Llegeix el fitxer d'àudio i comprova:
@@ -147,6 +150,7 @@ comentar que es veu encara pitjor...
     - Tria un segment de senyal de 25ms i insereix una gráfica amb la seva evolució temporal.
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
+<hr>
 
 ## Entrega
 
