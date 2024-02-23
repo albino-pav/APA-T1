@@ -219,7 +219,79 @@ Observant la gràfica de la transformada veiem que el pic arriba als $0dB$ que e
 
 **Aquest exercici l'hem resolt amb el codi** `AS_AF_code4.ipynb`.
 
+Primer hem carregat l'arxiu `luzbel44.wav` i hem comprovat que l'arxiu és mono i hem consultat les seves característiques:
 
+```python
+x, fm = sf.read('luzbel44.wav')
+if(x.ndim == 1):
+    print("El archivo de audio es mono \U0001F412 \U0001F44D")
+```
+
+Output: `El archivo de audio es mono 🐒 👍`
+<br>
+
+```python
+fm              # freqüència de mostratge
+```
+Output: `44100`
+<br>
+
+```python
+L = len(x)
+L               # nombre de mostres
+```
+Output: `95091`
+<br>
+
+Seguidament hem escollit un fragment del senyal i l'hem representat:
+
+```python
+Tm = 1 / fm
+Ls = int(fm * 25e-3)                     
+t = Tm * np.arange(L)                    
+
+plt.figure(0)                             
+plt.plot(t[2222:2222+Ls], x[2222:2222+Ls])              
+plt.xlabel('t en segons')                 
+plt.title('Luzbel pensava que la vida era jauja')   
+plt.show() 
+```
+<div align="center">
+
+![Fragment del senyal](img/senyal_ex4.png)
+</div>
+<br>
+Finalment hem realitzat la transformada FFT d'aquest mateix fragment:
+
+```python
+N = 5000
+X = fft(x[2222:2222+Ls], N)               
+X_half = X[0:N//2]               
+k = np.arange(N/2)                    
+freq_axis = k * (fm / N)
+epsilon = 1e-20                       
+dBs = 20 * np.log10(abs(X_half+epsilon) / max(abs(X_half+epsilon)))
+dB_min = -60
+dBs = np.maximum(dBs, dB_min)
+
+plt.figure(1)                         
+plt.subplot(211)                      
+plt.plot(freq_axis, dBs)              
+plt.title(f'Transformada del senyal de Ls={Ls} mostres amb DFT de N={N}')   
+plt.ylabel('|X[f]| dB')                  
+plt.subplot(212)                      
+plt.plot(freq_axis,np.unwrap(np.angle(X_half)))    
+plt.xlabel('Freqüència (Hz)')                 
+plt.ylabel('$\phi_x[f]$')             
+plt.show()
+```
+<div align="center">
+
+![Transformada del fragment del senyal](img/fft_ex4.png)
+</div>
+<br>
+
+Aquests valors concorden amb el tipus d'audio que estem analitzant ja que es tracta d'un fragment de veu.
 
 <hr>
 
