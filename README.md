@@ -185,8 +185,25 @@ El so que hem analitzat és el `so_2KHz.wav` que hem generat amb el codi del exe
 
 **Aquest exercici l'hem resolt amb el codi** `AS_AF_code3.ipynb`.
 
+<div align="center">
 
+#### *Sinusoide de 2KHz*
+![Transformada del senyal de Ls=20 mostres](img/fft_ex3.png)
+</div>
 
+Per adaptar la gràfica a dBs en el rang freqüencial de $0$ a $f_m/2$ hem implementat les següents linies de codi entre altres: 
+
+```python
+epsilon = 1e-20                       
+dBs = 20 * np.log10(abs(X_half+epsilon) / max(abs(X_half+epsilon)))
+dB_min = -60
+dBs = np.maximum(dBs, dB_min)
+```
+Hem afegit un valor de epsilon per evitar la operació $20 \log_{10} \left( \frac{0}{\max(|X(f)|)} \right)$ (per evitar la divisió de 0). 
+
+A més hem hagut de reduir el rang de valors que poden prendre els coefficients en dBs a un mínim de $-60dB$ per una millor visualització de la gràfica (hi ha coefficients que s'aproximen al $-\infty$). 
+
+Explicar que sí que es correspon amb la freq del senyal i que l'amplitud seria de 1 (en un rang de 0 a 1, ja que la referencia dels nivell es el coefficient amb máxim valor).
 <hr>
 
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
