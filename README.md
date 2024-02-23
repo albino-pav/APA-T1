@@ -105,7 +105,9 @@ plt.show()                            # Per mostrar els grafics
 ## Proves i exercicis a fer i entregar
 
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una freqüència pròpia en el marge audible. Comenta els resultats.
-<br>**Aquest exercici l'hem resolt amb el codi** `AS_AF_code1.ipynb`.
+<br>
+
+**Aquest exercici l'hem resolt amb el codi** `AS_AF_code1.ipynb`.
 
 <div align="center">
  
@@ -143,7 +145,9 @@ comentar que el senyal es distorsiona ja que es podrueix aliasing i explicar els
 
     - Explica el resultat del apartat anterior.
 
-<br>**Aquest exercici l'hem resolt amb el codi** `AS_AF_code2.ipynb`.
+<br>
+
+**Aquest exercici l'hem resolt amb el codi** `AS_AF_code2.ipynb`.
 
 <div align="center">
 
@@ -177,7 +181,9 @@ El so que hem analitzat és el `so_2KHz.wav` que hem generat amb el codi del exe
     >
     > $f_k = \frac{k}{N} f_m$
 
-<br>**Aquest exercici l'hem resolt amb el codi** `AS_AF_code3.ipynb`.
+<br>
+
+**Aquest exercici l'hem resolt amb el codi** `AS_AF_code3.ipynb`.
 
 
 
@@ -192,7 +198,9 @@ El so que hem analitzat és el `so_2KHz.wav` que hem generat amb el codi del exe
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
 
-<br>**Aquest exercici l'hem resolt amb el codi** `AS_AF_code4.ipynb`.
+<br>
+
+**Aquest exercici l'hem resolt amb el codi** `AS_AF_code4.ipynb`.
 
 
 
