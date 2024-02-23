@@ -203,7 +203,7 @@ Hem afegit un valor de epsilon per evitar la operació $20 \log_{10} \left( \fra
 
 A més hem hagut de reduir el rang de valors que poden prendre els coefficients en dBs a un mínim de $-60dB$ per una millor visualització de la gràfica (hi ha coefficients que s'aproximen al $-\infty$). 
 
-Explicar que sí que es correspon amb la freq del senyal i que l'amplitud seria de 1 (en un rang de 0 a 1, ja que la referencia dels nivell es el coefficient amb máxim valor).
+Observant la gràfica de la transformada veiem que el pic arriba als $0dB$ que en escala lineal es correspon a 1. Com la referència a l'hora de passar a escala logarítmica és el valor màxim de la FFT i el pic és 1 sabem que la sinusoide té un amplitud normalitzada amb valor 1 (valor màxim que pot prendre).
 <hr>
 
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
