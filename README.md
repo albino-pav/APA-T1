@@ -118,7 +118,13 @@ plt.show()                            # Per mostrar els grafics
 
 </div>
 
-comentar que la sinus no es veu be perque el sample rate es massa baix, pitjor resolucio de la forma d'ona... Explicar el pic de la transformada
+Observem que el senyal té una resolució baixa ja que la forma que pren no es exactamemt la d'una sinusoide. Això milloraria amb una freqüència de mostreig major.
+
+Trobem un pic a la transformada en l'index $625$. Si ho calculem, això es correspon amb la freqüència de la sinusoide:
+
+$k = \frac{1000Hz}{8000Hz} \times 5000 = 625$
+
+On sabem que la freqüència de mostreig es $8KHz$
 
 <br><div align="center">
 
@@ -127,7 +133,13 @@ comentar que la sinus no es veu be perque el sample rate es massa baix, pitjor r
 ![5 periodes de la sinusoide (4KHz)](img/4KHz.png)
 ![Transformada del senyal(4KHz) de Ls=10 mostres](img/fft_4KHz.png)
 </div>
-comentar que es veu encara pitjor, al limit del aliasing ja que es la meitat de la freq de mostreig, la frequnecia màxima que es pot representar sense aliasing... Explicar el pic de la transformada. Comparar i explicar com afecta el Ls(nombre de mostres) a la "precisió" de la transformada -> com més gran el nombre de mostres, mes gran es la ratio (lobul_pic / lobuls_secundaris)
+Veiem que aquest senyal encara té pitjor resolució ja que a més de ser una freqüència major que l'anterior, es tracta de la freqüència de Nyquist. És la frequencia màxima que podem reproduir amb aquest periode de mostreig.<br><br>
+
+Trobem un pic a la transformada en l'index $2500$. Si ho calculem, això es correspon amb la freqüència de la sinusoide:<br>
+
+$k = \frac{4000Hz}{8000Hz} \times 5000 = 2500$
+
+On sabem que la freqüència de mostreig es $8KHz$
 
 <br><div align="center">
 
@@ -136,7 +148,19 @@ comentar que es veu encara pitjor, al limit del aliasing ja que es la meitat de 
 ![""5 periodes"" de la sinusoide (5KHz)](img/5KHz.png)
 ![Transformada del senyal(5KHz) de Ls=8 mostres](img/fft_5KHz.png)
 </div>
-comentar que el senyal es distorsiona ja que es podrueix aliasing i explicar els pics que veiem en la transformada... Comparar i explicar com afecta el Ls(nombre de mostres) a la "precisió" de la transformada -> com més gran el nombre de mostres, mes gran es la ratio (lobul_pic / lobuls_secundaris)
+
+En aquesta freqüència trobem que es produeix aliasing (amb aquest periode de mostreig). Per aquest motiu veiem el senyal distorsionat i no una sinusoide pura.
+<br>
+
+A la transformada trobem un pic en l'index $3125$ i un altre en $5000 - 3125 = 1875$. Si ho calculem, això es correspon amb la freqüència de la sinusoide:<br>
+
+$k = \frac{5000Hz}{8000Hz} \times 5000 = 3125$
+
+Podem calcular també la "falsa freqüència" generada per l'aliasing:
+
+$f' = \frac{1875}{5000} \times 8000Hz = 3KHz$
+
+On sabem que la freqüència de mostreig es $8KHz$
 <br><hr>
 
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
