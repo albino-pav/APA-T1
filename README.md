@@ -106,13 +106,34 @@ plt.show()                            # Per mostrar els grafics
 
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una freqüència pròpia en el marge audible. Comenta els resultats.
 
-![5 periodes de la sinusoide (1KHz)](img/1KHz.png)
+<div align="center">
+ 
+#### *Sinusoide de 1KHz*
 
-comentar que la sinus no es veu be perque el sample rate es massa baix, pitjor resolucio de la forma d'ona...
+![5 periodes de la sinusoide (1KHz)](img/1KHz.png)
+![Transformada del senyal de Ls=40 mostres](img/fft_1KHz.png)
+
+</div>
+
+comentar que la sinus no es veu be perque el sample rate es massa baix, pitjor resolucio de la forma d'ona... Explicar el pic de la transformada
+
+<br><div align="center">
+
+#### *Sinusoide de 4KHz*
 
 ![5 periodes de la sinusoide (4KHz)](img/4KHz.png)
+![Transformada del senyal(4KHz) de Ls=10 mostres](img/fft_4KHz.png)
+</div>
+comentar que es veu encara pitjor, al limit del aliasing ja que es la meitat de la freq de mostreig, la frequnecia màxima que es pot representar sense aliasing... Explicar el pic de la transformada. Comparar i explicar com afecta el Ls(nombre de mostres) a la "precisió" de la transformada -> com més gran el nombre de mostres, mes gran es la ratio (lobul_pic / lobuls_secundaris)
 
-comentar que es veu encara pitjor...prova
+<br><div align="center">
+
+#### *Sinusoide de 5KHz*
+
+![""5 periodes"" de la sinusoide (5KHz)](img/5KHz.png)
+![Transformada del senyal(5KHz) de Ls=8 mostres](img/fft_5KHz.png)
+</div>
+comentar que el senyal es distorsiona ja que es podrueix aliasing i explicar els pics que veiem en la transformada... Comparar i explicar com afecta el Ls(nombre de mostres) a la "precisió" de la transformada -> com més gran el nombre de mostres, mes gran es la ratio (lobul_pic / lobuls_secundaris)
 <br><hr>
 
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
