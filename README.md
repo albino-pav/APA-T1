@@ -105,6 +105,7 @@ plt.show()                            # Per mostrar els grafics
 ## Proves i exercicis a fer i entregar
 
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una freqüència pròpia en el marge audible. Comenta els resultats.
+<br>**Aquest exercici l'hem resolt amb el codi** `AS_AF_code1.ipynb`.
 
 <div align="center">
  
@@ -141,6 +142,21 @@ comentar que el senyal es distorsiona ja que es podrueix aliasing i explicar els
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
 
     - Explica el resultat del apartat anterior.
+
+<br>**Aquest exercici l'hem resolt amb el codi** `AS_AF_code2.ipynb`.
+
+<div align="center">
+
+#### *Sinusoide de 2KHz*
+</div>
+
+El so que hem analitzat és el `so_2KHz.wav` que hem generat amb el codi del exercici anterior. Primerament hem obtingut la seva freqüència fonamental, el qual és senzill ja que es tracta d'un sol sinus. Això ho hem fet realitzant la FFT del senyal i trobant la frequencia la qual tenia un valor més gran. Amb la freqüència fonamental hem pogut calcular el periode i generar les següents gràfiques 
+
+<div align="center">
+
+![5 periodes de la sinusoide](img/sinus_ex2.png)
+![Transformada del senyal de Ls=20 mostres](img/fft_ex2.png)
+</div>
 <hr>
 
 3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de
@@ -160,6 +176,11 @@ comentar que el senyal es distorsiona ja que es podrueix aliasing i explicar els
     > - La relació entre els valors de l'índex k i la freqüència en Hz és:
     >
     > $f_k = \frac{k}{N} f_m$
+
+<br>**Aquest exercici l'hem resolt amb el codi** `AS_AF_code3.ipynb`.
+
+
+
 <hr>
 
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
@@ -170,6 +191,11 @@ comentar que el senyal es distorsiona ja que es podrueix aliasing i explicar els
     - Tria un segment de senyal de 25ms i insereix una gráfica amb la seva evolució temporal.
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
+
+<br>**Aquest exercici l'hem resolt amb el codi** `AS_AF_code4.ipynb`.
+
+
+
 <hr>
 
 ## Entrega
