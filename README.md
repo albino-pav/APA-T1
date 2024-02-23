@@ -241,6 +241,7 @@ L = len(x)
 L               # nombre de mostres
 ```
 Output: `95091`
+
 <br>
 
 Seguidament hem escollit un fragment del senyal i l'hem representat:
