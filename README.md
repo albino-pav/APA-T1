@@ -262,7 +262,8 @@ plt.show()
 ![Fragment del senyal](img/senyal_ex4.png)
 </div>
 <br>
-Finalment hem realitzat la transformada FFT d'aquest mateix fragment:
+
+Finalment hem realitzat la transformada FFT d'aquest mateix fragment:<br>
 
 ```python
 N = 5000
