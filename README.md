@@ -107,11 +107,17 @@ plt.show()                            # Per mostrar els grafics
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una
     freqüència pròpia en el marge audible. Comenta els resultats.
 
+**RESPUESTA:**
+La primera figura muestra las señales en el tiempo de 2.5 segundos por lo que al haber tantas oscilaciones no se ven individualmente. En la segunda figura se muestran 5 periodos de cada señal. En la primera señal al haber casi 10 veces más oscilaciones por segundo se aprecia una disminución de la resolución. A continuación suenan los dos sonidos de 2.5 segundos cada uno. En la tercera figura se muestra la transformada de Fourier, separada en modulo y fase, de la señal 1, esta se observa en función de la frecuencia con el primer pico en la frecuencia de la senoide, y como está muestreada a 44100 Hz, se observa las frecuencias negativas del primer alias. Finalmente, lo mismo pasa con la señal 2 en la cuarta figura.
+
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
 
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
 
     - Explica el resultat del apartat anterior.
+
+**RESPUESTA:**
+La señal de audio de 440 Hz se representa en el dominio del tiempo y en el dominio de la frecuencia. En el dominio del tiempo, se observa la señal de audio de 440 Hz durante 5 periodos. En el dominio de la frecuencia, se observa el módulo y la fase de la transformada de Fourier de la señal en función del número de muestra. Finalmente, añadir que para obtener la frecuencia de la señal a partir del archivo habría que analizar el paso mínimo entre armónicos.
 
 3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de
     $0$ a $f_m/2$ en Hz.
@@ -139,6 +145,8 @@ plt.show()                            # Per mostrar els grafics
     - Tria un segment de senyal de 25ms i insereix una gráfica amb la seva evolució temporal.
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
+
+**RESPUESTA:** Las frecuencias bajas (0Hz - 7500Hz approx) son las que más amplitude tienen, siendo especialmente importante las frecuencia de 0Hz a 530Hz más o menos.
 
 ## Entrega
 

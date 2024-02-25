@@ -55,10 +55,3 @@ plt.subplot(212)
 plt.plot(f[:int(len(f)/2)],fase_x[:int(len(f)/2)])
 plt.title('Fase en función de la frecuencia')
 plt.show()
-
-# ------------------------------------------------------------ #
-# Quines son les freqüències més importants del segment triat?
-# ------------------------------------------------------------ #
-
-# Las frecuencias bajas (0Hz - 7500Hz approx) son las que más amplitude tienen, 
-# siendo especialmente importante las frecuencia de 0Hz a 530Hz más o menos.

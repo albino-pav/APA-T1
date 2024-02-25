@@ -92,14 +92,3 @@ plt.plot(k, np.angle(X2))
 plt.xlabel('Numero de muestra')
 plt.ylabel('Fase')
 plt.show()
-
-# Comentario de los resultados:
-
-# La primera figura muestra las señales en el tiempo de 2.5 segundos por lo que al haber tantas 
-# oscilaciones no se ven individualmente. En la segunda figura se muestran 5 periodos de cada señal
-# En la primera señal al haber casi 10 veces más oscilaciones por segundo se aprecia una disminución 
-# de la resolución. A continuación suenan los dos sonidos de 2.5 segundos cada uno. En la tercera
-# figura se muestra la transformada de Fourier, separada en modulo y fase, de la señal 1, esta se 
-# observa en función de la frecuencia con el primer pico en la frecuencia de la senoide, y como está 
-# muestreada a 44100 Hz, se observa las frecuencias negativas del primer alias. Finalmente, lo mismo 
-# pasa con la señal 2 en la cuarta figura.

@@ -8,7 +8,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import soundfile as sf
-# import sounddevice as sd # No es necesario para este ejercicio
 from numpy.fft import fft 
 import os
 
@@ -40,11 +39,3 @@ plt.plot(fase_X_R)
 plt.xlabel('Numero de muestra')
 plt.ylabel('Fase de DTF')
 plt.show()
-
-# Explica el resultado del apartado anterior:
-
-# La señal de audio de 440 Hz se representa en el dominio del tiempo y en el dominio de la frecuencia.
-# En el dominio del tiempo, se observa la señal de audio de 440 Hz durante 5 periodos. En el dominio 
-# de la frecuencia, se observa el módulo y la fase de la transformada de Fourier de la señal en función 
-# del número de muestra. Finalmente, añadir que para obtener la frecuencia de la señal a partir del archivo 
-# habría que analizar el paso mínimo entre armónicos.
