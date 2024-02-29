@@ -1,6 +1,6 @@
 # Primera tasca APA 2023: Anàlisi fitxer de so
 
-## Nom i cognoms: Gerard Soteras Garriga i Ferran Murcia Rull
+## Nom i cognoms: Ferran Murcia Rull i Gerard Soteras Garriga
 
 ## Representació temporal i freqüencial de senyals d'àudio
 
