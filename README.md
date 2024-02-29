@@ -1,10 +1,11 @@
 # Primera tasca APA 2023: Anàlisi fitxer de so
 
-## Nom i cognoms: Gerard Soteras Garriga i Ferran Murcia Rull
+## Nom i cognoms: Ferran Murcia Rull
 
 ## Representació temporal i freqüencial de senyals d'àudio
 
 ### Domini temporal
+
 
 Per llegir, escriure i representar un fitxer en format `*.wav` en python podem fem servir els següents mòduls:
 
