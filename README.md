@@ -105,9 +105,6 @@ plt.show()                            # Per mostrar els grafics
 ## Proves i exercicis a fer i entregar
 
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una freqüència pròpia en el marge audible. Comenta els resultats.
-<br>
-
-**Aquest exercici l'hem resolt amb el codi** `AS_AF_code1.ipynb`.
 
 <div align="center">
  
@@ -171,8 +168,9 @@ On sabem que la freqüència de mostreig es $8KHz$
 
 <br>
 
-**Aquest exercici l'hem resolt amb el codi** `AS_AF_code2.ipynb`.
-
+**Aquest exercici l'hem resolt amb el codi** `AS_AF_code2.ipynb`.<br>
+**Hem adaptat el codi original per generar una sinusoide de 2KHz amb amplitud normalitzada a 1 (A=1 enlloc del valor A=4 del codi original). De no fer-ho obtindriem el senyal "saturat", és a dir, els valors més grans que 1 són truncats.** <br>
+**En resum el senyal digital ha d'estar normalitzat a 1.**
 <div align="center">
 
 #### *Sinusoide de 2KHz*
