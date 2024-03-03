@@ -169,7 +169,7 @@ On sabem que la freqüència de mostreig es $8KHz$
 <br>
 
 **Aquest exercici l'hem resolt amb el codi** `AS_AF_code2.ipynb`.<br>
-**Hem adaptat el codi original per generar una sinusoide de 2KHz amb amplitud normalitzada a 1 (A=1 enlloc del valor A=4 del codi original). De no fer-ho obtindriem el senyal "saturat", és a dir, els valors més grans que 1 són truncats.** <br>
+**Hem adaptat el codi original per generar una sinusoide de 2KHz amb amplitud normalitzada a 1 (A=1 enlloc del valor A=4 del codi original). En cas de no fer-ho obtindriem el senyal "saturat", és a dir, els valors més grans que 1 són truncats.** <br>
 **En resum el senyal digital ha d'estar normalitzat a 1.**
 <div align="center">
 
