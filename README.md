@@ -108,11 +108,34 @@ plt.show()                            # Per mostrar els grafics
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una
     freqüència pròpia en el marge audible. Comenta els resultats.
 
+
+   ## Exercici  1
+### Comentar resultats:
+
+Hem modificat la freqüència del senyal 1 perquè sigui 4khz i hem creat una nova sinusoide de 440hz. Hem calculat les respectives fft. Com podem veure a la primera gràfica, ens mostra 5 períodes dels dos senyals sinusoidals. En la primera sinusoide l'eix d'abscisses en 5 períodes va del 0 als 0,001 s i a la segona del 0 al 0,01.
+
+A causa de la freqüència de mostratge escollida podem observar que la primera sinusoide a tenir una elevada freqüència en representar-la sembla més aviat un senyal triangular.
+
+A les respectives fft's veiem un pic a k=2500 que és correspon amb f0 = 4khz (k/N = f0/fm) i a la segona veiem un pic a k = 275 i a k = 4725 que és la repetició simètrica de la freqüència fonamental.
+
+
+
+
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
 
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
 
     - Explica el resultat del apartat anterior.
+
+
+## Exercici 2
+### Comentar resultats:
+
+Com podem observar, en aquesta nova imatge hem utilitzat el anterior fitxer 'exemple_4kHz' i l'hem carregat i llegit per a aquest nou exercici. Hem hagut de modificar/ajustar la fx a 4kHz i la Tx per a obtenir el número de mostres corresponents per a aquesta nova figura.
+
+La gràfica de la sinusoide i de la seva nova transformada és la mateixa que hem obtingut per a l'exercici anterior, ja que és l'arxiu que simplement hem llegit a l'exercici anterior.
+
+
 
 3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de
     $0$ a $f_m/2$ en Hz.
@@ -132,6 +155,17 @@ plt.show()                            # Per mostrar els grafics
     >
     > $f_k = \frac{k}{N} f_m$
 
+
+## Exercici 3
+### Comentar resultats:
+
+Hem hagut de canviar l'escala de representació agafant la meitat de número de mostres, calcula en db utilitzant la fòrmula donada evitant la divisó entre 0 sumant 1 al valor de la transformada després de fer el valor absolut.
+
+Com podem veure en la ilustració de la transformada, tenim un pic a l'index de la k de 2500 el qual com em demostrat abans es correspont amb la freqüència de 4000 Hz. La fase correspont és la mateixa que teniem abans pero dividit entre 2.
+
+
+
+
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
     Llegeix el fitxer d'àudio i comprova:
 
@@ -140,6 +174,20 @@ plt.show()                            # Per mostrar els grafics
     - Tria un segment de senyal de 25ms i insereix una gráfica amb la seva evolució temporal.
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
+
+
+## Exercici 4
+### Comentar resultats:
+
+Hem agafat l'arxiu *'canso.wav'* mono de duració 4 segons on hem definit els següent punts:
+
+- *fm* = agafat directament de la lectura del fitxer
+- *L* = producte de *fm * x_r* (tamany de la cançó) 
+- *ls* --> hem representat en 25 ms la transformada del senyal
+- *X_db* --> hem passat a db la transformada del senyal en el marge indicat
+- Les freqüència més important que podem notar és la freqüència fonamental on la podem trobar a *f0 = 153 Hz* i la segona a *f02 = 47846 Hz* que és el reflexa de la primera però és fora del rang audible i no és important com la primera.
+
+
 
 ## Entrega
 
