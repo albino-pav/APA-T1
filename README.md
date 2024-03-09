@@ -1,6 +1,6 @@
 # Primera tasca APA 2023: Anàlisi fitxer de so
 
-## Nom i cognoms:
+## Nom i cognoms: Andreu Snijders i Adrián Fernández
 
 ## Representació temporal i freqüencial de senyals d'àudio
 
@@ -104,14 +104,86 @@ plt.show()                            # Per mostrar els grafics
 
 ## Proves i exercicis a fer i entregar
 
-1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una
-    freqüència pròpia en el marge audible. Comenta els resultats.
+1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una freqüència pròpia en el marge audible. Comenta els resultats.
+
+<div align="center">
+ 
+#### *Sinusoide de 1KHz*
+
+![5 periodes de la sinusoide (1KHz)](img/1KHz.png)
+![Transformada del senyal de Ls=40 mostres](img/fft_1KHz.png)
+
+</div>
+
+Observem que el senyal té una resolució baixa ja que la forma que pren no es exactamemt la d'una sinusoide. Això milloraria amb una freqüència de mostreig major.
+
+Trobem un pic a la transformada en l'index $625$. Si ho calculem, això es correspon amb la freqüència de la sinusoide:
+
+$k = \frac{1000Hz}{8000Hz} \times 5000 = 625$
+
+On sabem que la freqüència de mostreig es $8KHz$
+
+<br><div align="center">
+
+#### *Sinusoide de 4KHz*
+
+![5 periodes de la sinusoide (4KHz)](img/4KHz.png)
+![Transformada del senyal(4KHz) de Ls=10 mostres](img/fft_4KHz.png)
+</div>
+Veiem que aquest senyal encara té pitjor resolució ja que a més de ser una freqüència major que l'anterior, es tracta de la freqüència de Nyquist. És la frequencia màxima que podem reproduir amb aquest periode de mostreig.<br><br>
+
+Trobem un pic a la transformada en l'index $2500$. Si ho calculem, això es correspon amb la freqüència de la sinusoide:<br>
+
+$k = \frac{4000Hz}{8000Hz} \times 5000 = 2500$
+
+On sabem que la freqüència de mostreig es $8KHz$
+
+<br><div align="center">
+
+#### *Sinusoide de 5KHz*
+
+![""5 periodes"" de la sinusoide (5KHz)](img/5KHz.png)
+![Transformada del senyal(5KHz) de Ls=8 mostres](img/fft_5KHz.png)
+</div>
+
+En aquesta freqüència trobem que es produeix aliasing (amb aquest periode de mostreig). Per aquest motiu veiem el senyal distorsionat i no una sinusoide pura.
+<br>
+
+A la transformada trobem un pic en l'index $3125$ i un altre en $5000 - 3125 = 1875$. Si ho calculem, això es correspon amb la freqüència de la sinusoide:<br>
+
+$k = \frac{5000Hz}{8000Hz} \times 5000 = 3125$
+
+Podem calcular també la "falsa freqüència" generada per l'aliasing:
+
+$f' = \frac{1875}{5000} \times 8000Hz = 3KHz$
+
+On sabem que la freqüència de mostreig es $8KHz$
+<br><hr>
 
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
 
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
 
     - Explica el resultat del apartat anterior.
+
+<br>
+
+**Aquest exercici l'hem resolt amb el codi** `AS_AF_code2.ipynb`.<br>
+**Hem adaptat el codi original per generar una sinusoide de 2KHz amb amplitud normalitzada a 1 (A=1 enlloc del valor A=4 del codi original). En cas de no fer-ho obtindriem el senyal "saturat", és a dir, els valors més grans que 1 són truncats.** <br>
+**En resum el senyal digital ha d'estar normalitzat a 1.**
+<div align="center">
+
+#### *Sinusoide de 2KHz*
+</div>
+
+El so que hem analitzat és el `so_2KHz.wav` que hem generat amb el codi del exercici anterior. Primerament hem obtingut la seva freqüència fonamental, el qual és senzill ja que es tracta d'un sol sinus. Això ho hem fet realitzant la FFT del senyal i trobant la frequencia la qual tenia un valor més gran. Amb la freqüència fonamental hem pogut calcular el periode i generar les següents gràfiques 
+
+<div align="center">
+
+![5 periodes de la sinusoide](img/sinus_ex2.png)
+![Transformada del senyal de Ls=20 mostres](img/fft_ex2.png)
+</div>
+<hr>
 
 3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de
     $0$ a $f_m/2$ en Hz.
@@ -131,6 +203,31 @@ plt.show()                            # Per mostrar els grafics
     >
     > $f_k = \frac{k}{N} f_m$
 
+<br>
+
+**Aquest exercici l'hem resolt amb el codi** `AS_AF_code3.ipynb`.
+
+<div align="center">
+
+#### *Sinusoide de 2KHz*
+![Transformada del senyal de Ls=20 mostres](img/fft_ex3.png)
+</div>
+
+Per adaptar la gràfica a dBs en el rang freqüencial de $0$ a $f_m/2$ hem implementat les següents linies de codi entre altres: 
+
+```python
+epsilon = 1e-20                       
+dBs = 20 * np.log10(abs(X_half+epsilon) / max(abs(X_half+epsilon)))
+dB_min = -60
+dBs = np.maximum(dBs, dB_min)
+```
+Hem afegit un valor de epsilon per evitar la operació $20 \log_{10} \left( \frac{0}{\max(|X(f)|)} \right)$ (per evitar la divisió de 0). 
+
+A més hem hagut de reduir el rang de valors que poden prendre els coefficients en dBs a un mínim de $-60dB$ per una millor visualització de la gràfica (hi ha coefficients que s'aproximen al $-\infty$). 
+
+Observant la gràfica de la transformada veiem que el pic arriba als $0dB$ que en escala lineal es correspon a 1. Com la referència a l'hora de passar a escala logarítmica és el valor màxim de la FFT i el pic és 1 sabem que la sinusoide té un amplitud normalitzada amb valor 1 (valor màxim que pot prendre).
+<hr>
+
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
     Llegeix el fitxer d'àudio i comprova:
 
@@ -139,6 +236,88 @@ plt.show()                            # Per mostrar els grafics
     - Tria un segment de senyal de 25ms i insereix una gráfica amb la seva evolució temporal.
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
+
+<br>
+
+**Aquest exercici l'hem resolt amb el codi** `AS_AF_code4.ipynb`.
+
+Primer hem carregat l'arxiu `luzbel44.wav` i hem comprovat que l'arxiu és mono i hem consultat les seves característiques:
+
+```python
+x, fm = sf.read('luzbel44.wav')
+if(x.ndim == 1):
+    print("El archivo de audio es mono \U0001F412 \U0001F44D")
+```
+
+Output: `El archivo de audio es mono 🐒 👍`
+<br>
+
+```python
+fm              # freqüència de mostratge
+```
+Output: `44100`
+<br>
+
+```python
+L = len(x)
+L               # nombre de mostres
+```
+Output: `95091`
+
+<br>
+
+Seguidament hem escollit un fragment del senyal i l'hem representat:
+
+```python
+Tm = 1 / fm
+Ls = int(fm * 25e-3)                     
+t = Tm * np.arange(L)                    
+
+plt.figure(0)                             
+plt.plot(t[2222:2222+Ls], x[2222:2222+Ls])              
+plt.xlabel('t en segons')                 
+plt.title('Luzbel pensava que la vida era jauja')   
+plt.show() 
+```
+<div align="center">
+
+![Fragment del senyal](img/senyal_ex4.png)
+</div>
+<br>
+
+Finalment hem realitzat la transformada FFT d'aquest mateix fragment:<br>
+
+```python
+N = 5000
+X = fft(x[2222:2222+Ls], N)               
+X_half = X[0:N//2]               
+k = np.arange(N/2)                    
+freq_axis = k * (fm / N)
+epsilon = 1e-20                       
+dBs = 20 * np.log10(abs(X_half+epsilon) / max(abs(X_half+epsilon)))
+dB_min = -60
+dBs = np.maximum(dBs, dB_min)
+
+plt.figure(1)                         
+plt.subplot(211)                      
+plt.plot(freq_axis, dBs)              
+plt.title(f'Transformada del senyal de Ls={Ls} mostres amb DFT de N={N}')   
+plt.ylabel('|X[f]| dB')                  
+plt.subplot(212)                      
+plt.plot(freq_axis,np.unwrap(np.angle(X_half)))    
+plt.xlabel('Freqüència (Hz)')                 
+plt.ylabel('$\phi_x[f]$')             
+plt.show()
+```
+<div align="center">
+
+![Transformada del fragment del senyal](img/fft_ex4.png)
+</div>
+<br>
+
+Aquests valors concorden amb el tipus d'audio que estem analitzant ja que es tracta d'un fragment de veu.
+
+<hr>
 
 ## Entrega
 
