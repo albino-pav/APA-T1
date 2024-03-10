@@ -109,11 +109,81 @@ plt.show()                            # Per mostrar els grafics
 
     Aqui hay que comentar resultados
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import soundfile as sf
+import sounddevice as sd
+
+T = 2.5
+fm = 8000
+fx1 = 4000
+fx2 = 200
+A = 4
+pi = np.pi
+L = int(fm * T)
+Tm = 1/fm
+t=Tm*np.arange(L) 
+x1 = A * np.cos(2 * pi * fx1 * t)
+x2 = A * np.cos(2 * pi * fx2 * t)
+sf.write('so_1.wav', x1, fm)
+sf.write('so_2.wav', x2, fm)
+
+Tx1 = 1/fx1
+Tx2 = 1/fx2
+Ls1 = int(fm * 5 * Tx1)
+Ls2 = int(fm * 5 * Tx2)
+
+plt.figure(0)                             
+plt.plot(t[0:Ls1], x1[0:Ls1])             
+plt.show()                                
+
+plt.figure(1)                             
+plt.plot(t[0:Ls2], x2[0:Ls2])              
+plt.show() 
+```
+![Periode 1](img/1.1.png)
+![Periode 2](img/1.2.png)
+
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
 
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
 
     - Explica el resultat del apartat anterior.
+
+```python
+x1, fm = sf.read('so_1.wav')         
+x2, fm = sf.read('so_2.wav') 
+
+Tx1 = 1/fx1
+Tx2 = 1/fx2
+Ls1 = int(fm * 5 * Tx1)
+Ls2 = int(fm * 5 * Tx2) 
+
+plt.plot(x1[0:Ls1])                      
+plt.show()                               
+                            
+plt.plot(x2[0:Ls2])                      
+plt.show()  
+```
+
+![2.1](img/2.1.png/)
+![2.2](img/2.2.png)
+
+```python
+N = 5000                                 
+X1 = np.fft.fft(x1, N)                   
+X2 = np.fft.fft(x2, N)                  
+
+plt.figure(4)                           
+plt.subplot(2,1,1)                       
+plt.plot(np.arange(N), np.abs(X1))      
+                       
+plt.subplot(2,1,2)                      
+plt.plot(np.arange(N), abs(X2))   
+```
+
+![2.3](img/2.3.png)
 
 3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de
     $0$ a $f_m/2$ en Hz.
@@ -133,6 +203,21 @@ plt.show()                            # Per mostrar els grafics
     >
     > $f_k = \frac{k}{N} f_m$
 
+```python
+freqs = ((np.arange(N)/N)*fm)
+eps = 0.1                                                                             
+dB1 = 20*np.log10(np.abs(X1) + eps)                                                     
+dB2 = 20*np.log10(np.abs(X2))   
+
+plt.subplot(211)                                                                        
+plt.plot(freqs[0 : int(len(freqs)/2 + 1)], dB1[0 : int(len(dB1)/2 + 1)])               
+                                                                                                                                                                   
+plt.subplot(212)                                                                        
+plt.plot(freqs[0 : int(len(freqs)/2)], dB2[0 : int(len(dB2)/2)])                                                                                                                                                           
+plt.show()  
+```
+![3.1](img/3.1.png)
+
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
     Llegeix el fitxer d'àudio i comprova:
 
@@ -142,6 +227,35 @@ plt.show()                            # Per mostrar els grafics
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
 
+```python
+x, fm = sf.read('Master_Of_Puppets.wav')                        
+L = len(x)                                                  
+Tm=1/fm                                                  
+
+print('Fm:', fm, 'Hz')           
+print('T:', Tm, 's')                
+print('NoMostres:', L)       
+print('Durada:', L*Tm, 's')
+
+periode = 25e-3                                                           
+mostres = int(periode/Tm)                                                  
+print('El nombre de mostres corresponents a 25 ms és:', mostres)          
+
+plt.figure(0)                                                           
+plt.plot(x[1800 : 1800 + mostres])                                          
+plt.show()                                                              
+
+N = 5000                                                                
+X = np.fft.fft(10000*x, N)                                              
+freqs = ((np.arange(N)/N)*fm)                                           
+dB = 20*np.log10(np.abs(X))                                             
+
+plt.figure(1)                                                           
+plt.plot(freqs[0 : int(len(freqs)/2 + 1)], dB[0 : int(len(dB)/2 + 1)])  
+plt.show()     
+```
+![4.1](img/4.1.png)
+![4.2](img/4.2.png)
 ## Entrega
 
 - L'alumne ha de respondre a totes les qüestions formulades en aquest mateix fitxer, README.md.
