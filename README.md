@@ -148,7 +148,7 @@ plt.show()                            # Per mostrar els grafics
     plt.show()                                # Visualització de l'objecte gràfic.
     ```
 
-    ![alt text](image.png)
+    ![alt text](https://github.com/gerardcotsescude/APA-T1/blob/main/img/image.png)
 
     Podem observar que, al ser $f1 = 4 kHz$ (la freqüència límit per cumplir Nyquist **$f \leq \frac{fm}{2}$**), només mostregem les mostres justes per tal de poder representar el senyal sense que aparegui aliasing. Per altre banda la $f2 = 500 Hz$ es representa més fidelment al senyal original. Si volguéssim mostrejar senyals de més de $4 kHz$ hauríem de fer servir una freqüència de mostreig més gran. Com que aquests senyals s'hauran de reproduïr, podriem fer servir la freqüència de mostreig $fm=44100 Hz$ i així ens assegurem que es compleix Nyquist en tot l'ample de banda audible.
 
@@ -195,7 +195,7 @@ plt.show()                            # Per mostrar els grafics
 
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
     
-    ![alt text](./img/image-1.png)
+    ![alt text](https://github.com/gerardcotsescude/APA-T1/blob/main/img/image-1.png)
     
     - Explica el resultat del apartat anterior.
 
@@ -240,7 +240,7 @@ plt.show()                            # Per mostrar els grafics
     plt.show()                                                                              # Visualització de l'objecte gràfic.
     ```
     
-    ![alt text](./img/image-2.png)
+    ![alt text](https://github.com/gerardcotsescude/APA-T1/blob/main/img/image-2.png)
 
     En primer lloc podem veure que la relació senyal soroll mesurat logarítmicament (que és la manera de fer-ho més fidel a la percepció humana), no és tant bona com semblava linealment. Ara però ens és més fàcil veure les freqüències presents en Hz. El més interessant és el que observem a $f2$, ja que els harmònics que veiem són els imparells. 
 
@@ -302,7 +302,7 @@ plt.show()                            # Per mostrar els grafics
         > Resultat:
         >
         > El nombre de mostres corresponents a 25 ms és: 1102
-        ![alt text](./img/image-4.png)
+        ![alt text](https://github.com/gerardcotsescude/APA-T1/blob/main/img/image-4.png)
 
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
         ```python
@@ -321,7 +321,7 @@ plt.show()                            # Per mostrar els grafics
         plt.show()                                                               # Visualització de l'objecte gràfic. 
         ```
 
-        ![alt text](./img/image-5.png)
+        ![alt text](https://github.com/gerardcotsescude/APA-T1/blob/main/img/image-5.png)
 
     - Quines son les freqüències més importants del segment triat?
 
