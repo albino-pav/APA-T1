@@ -107,8 +107,6 @@ plt.show()                            # Per mostrar els grafics
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una
     freqüència pròpia en el marge audible. Comenta els resultats.
 
-    Aqui hay que comentar resultados
-
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -144,6 +142,8 @@ plt.show()
 ```
 ![Periode 1](img/1.1.png)
 ![Periode 2](img/1.2.png)
+
+La primera frecuencia no cumple del todo nyqujist por lo que no hay una repreentacion fiel
 
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
 
