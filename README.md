@@ -1,8 +1,8 @@
 # Primera tasca APA 2023: Anàlisi fitxer de so
 
-## Nom i cognoms:
-
 ## Representació temporal i freqüencial de senyals d'àudio
+
+##### Nom i cognoms: Ona Bonastre Martí
 
 ### Domini temporal
 
@@ -104,8 +104,27 @@ plt.show()                            # Per mostrar els grafics
 
 ## Proves i exercicis a fer i entregar
 
-1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una
-    freqüència pròpia en el marge audible. Comenta els resultats.
+1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una freqüència pròpia en el marge audible. Comenta els resultats.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import sounddevice as sd
+
+T = 2.5
+fm = 48000
+fx = 2000
+A = 4
+pi = np.pi
+L = int(fm*T)
+Tm = 1/fm
+t = Tm*np.arange(L)
+x = A*np.sin(2*pi*fx*t)
+sf.write('s_sin1.wav', x, fm)
+x1, fm1 = sf.read("s_sin1.wav")
+sd.play(x, fm)
+```
+Com més alta la freqüència de la sinusoide (so més agut), més alta ha de ser la freqüència de mostreig per poder representar gràficament la sinusoide d'una manera correcta i evitar aliasing. 
 
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
 
@@ -113,13 +132,42 @@ plt.show()                            # Per mostrar els grafics
 
     - Explica el resultat del apartat anterior.
 
-3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de
-    $0$ a $f_m/2$ en Hz.
+```python
+Tx=1/fx                                   
+Ls=int(fm*5*Tx)                           
+
+plt.figure(0)                             
+plt.plot(t[0:Ls], x[0:Ls])                
+plt.xlabel('t en segons')                 
+plt.title('5 periodes de la sinusoide')   
+plt.show()
+
+N = 5000
+X = fft(x[0 : Ls], N)
+
+k=np.arange(N)                        
+
+plt.figure(1)                         
+plt.subplot(211)                      
+plt.plot(k,abs(X))                    
+plt.title(f'Transformada del senyal de Ls={Ls} mostres amb DFT de N={N}')   
+plt.ylabel('|X[k]|')                  
+plt.subplot(212)                      
+plt.plot(k,np.unwrap(np.angle(X)))    
+plt.xlabel('Index k')                 
+plt.ylabel('$\phi_x[k]$')             
+plt.show() 
+```
+![Senyal](img/señal.png)
+![text](img/transformada.png)
+
+La transformada té una sola freqüència visible ja que, com es pot veure en la primera imatge, tenim una sinusoide. Al ser una ona pura, sense interferències, es mostra clarament un pic a cada banda de l'espectre.
+
+3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de $0$ a $f_m/2$ en Hz.
 
     - Comprova que la mesura de freqüència es correspon amb la freqüència de la sinusoide que has fet servir.
 
-    - Com pots identificar l'amplitud de la sinusoide a partir de la representació de la transformada?
-      Comprova-ho amb el senyal generat.
+    - Com pots identificar l'amplitud de la sinusoide a partir de la representació de la transformada? Comprova-ho amb el senyal generat.
 
     > NOTES:
     >
@@ -131,6 +179,20 @@ plt.show()                            # Per mostrar els grafics
     >
     > $f_k = \frac{k}{N} f_m$
 
+
+```python
+XdB = 20*np.log10(abs(X)/max(abs(X)))
+fk = k*fm/N
+
+plt.figure(3)                                            
+plt.plot(fk[0:int(len(fk)/2)],XdB[0:int(len(fk)/2)])                    
+plt.title(f'Mòdul de la transformada del senyal en el marge de 0 a fm/2') 
+plt.xlabel('fk')                 
+plt.ylabel('X(dB)')  
+plt.show()
+```
+![modul_dB](img/modul_db.png)
+
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
     Llegeix el fitxer d'àudio i comprova:
 
@@ -140,13 +202,48 @@ plt.show()                            # Per mostrar els grafics
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
 
+```python
+x1, fm1 = sf.read("APA_T1\mao3_1.wav")
+print('\n', "Freqüència de mostratge: " + str(fm1))
+print(" Mostres de senyal: " + str(len(x1)))
+
+t_seg = 25E-3
+m_inici = 15500
+m_final = int(m_inici + t_seg * fm1)
+Tm1 = 1 / fm1
+tx_seg = np.arange(0, t_seg, Tm1)
+
+plt.figure(4)                             
+plt.plot(tx_seg, x1[m_inici:m_final])                
+plt.xlabel('t')                 
+plt.ylabel('x')
+plt.title('Senyal en el domini temporal')   
+plt.show()
+```
+![Domini temporal](img/mao_temp.png)
+
+```python
+X1 = fft(x1[m_inici:m_final], N)
+k1 = np.arange(N)  
+XdB1 = 20*np.log10(abs(X1)/max(abs(X1)))
+fk1 = k1*fm1/N
+
+plt.figure(5)                                            
+plt.plot(fk1[0:int(len(fk1)/2)],XdB1[0:int(len(fk1)/2)])                    
+plt.title(f'Mòdul de la transformada del senyal en el marge de 0 a fm/2')  
+plt.xlabel('fk')                 
+plt.ylabel('X(dB)') 
+plt.show()
+```
+![TF_veu](img/mao_TF.png)
+
+Les dues freqüències més importants són a 300Hz i 425Hz ja que són els dos harmònics amb més rellevància espectral.
+
 ## Entrega
 
 - L'alumne ha de respondre a totes les qüestions formulades en aquest mateix fitxer, README.md.
-  - El format del fitxer es l'anomenat *Markdown* que permet generar textos amb capacitats gràfiques (com ara *cursiva*, **negreta**,
-  fòrmules matemàtiques, taules, etc.), sense perdre la llegibilitat en mode text.
+  - El format del fitxer es l'anomenat *Markdown* que permet generar textos amb capacitats gràfiques (com ara *cursiva*, **negreta**, fòrmules matemàtiques, taules, etc.), sense perdre la llegibilitat en mode text.
   - Disposa d'una petita introducció a llenguatge de Markdown al fitxer `MARKDOWN.md`.
 - El repositori GitHub ha d'incloure un fitxer amb tot el codi necesari per respondre les qüestions i dibuixar les gràfiques.
 - El nom del fitxer o fitxers amb el codi ha de començar amb les inicials de l'alumne (per exemple, `fvp_codi.py`).
-- Recordéu ficar el el vostre nom complet a l'inici del fitxer o fitxers amb el codi i d'emplar el camp `Nom i cognoms` a dalt de tot
-  d'aquest fitxer, README.md.
+- Recordéu ficar el el vostre nom complet a l'inici del fitxer o fitxers amb el codi i d'emplar el camp `Nom i cognoms` a dalt de tot d'aquest fitxer, README.md.
